@@ -41,7 +41,7 @@
                                     android:id="@+id/textView_NoteTitle"
                                     android:layout_weight="200"
                                     android:textColor="@color/black"
-                                    android:text="Title"
+                                    android:text="@string/title"
                                     android:textStyle="bold"
                                     android:textSize="22sp"/>
 
@@ -60,7 +60,7 @@
                                 android:id="@+id/textView_NoteBody"
                                 android:layout_marginTop="16dp"
                                 android:maxHeight="170dp"
-                                android:text="Note"
+                                android:text="@string/note"
                                 android:textSize="16sp"
                                 android:textColor="@color/black"/>
 
