@@ -2,7 +2,6 @@ package com.example.notes.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.*
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -17,7 +16,6 @@ import com.example.notes.MainActivity
 import com.example.notes.R
 import com.example.notes.databinding.FragmentUpdateNoteBinding
 import com.example.notes.room.Note
-import com.example.notes.viewUI.NoteAdapter
 import com.example.notes.viewmodel.NoteViewModel
 
 class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
@@ -98,9 +96,7 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
                 view?.findNavController()?.navigate(
                     R.id.action_updateNoteFragment_to_homeFragment
                 )
-
             }
-
             //Button 2 , negative of the voc = cancel
             setNegativeButton("Cancel", null)
         }.create().show()

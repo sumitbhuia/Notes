@@ -1,20 +1,16 @@
 package com.example.notes.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.SearchView
+import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notes.MainActivity
 import com.example.notes.R
+import com.example.notes.viewUI.NoteAdapter
 import com.example.notes.databinding.FragmentHomeBinding
 import com.example.notes.room.Note
-import com.example.notes.viewUI.NoteAdapter
 import com.example.notes.viewmodel.NoteViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextListener {
@@ -81,6 +77,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
 
         if (note != null) {
             if (note.isNotEmpty()) {
+                //Card View of home fragment
                 binding.cardView.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
             } else {
