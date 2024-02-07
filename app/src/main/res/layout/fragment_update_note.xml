@@ -71,6 +71,7 @@
         android:src="@drawable/ic_done"
         android:tintMode="@color/white"
         app:borderWidth="0dp"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraLarge" />

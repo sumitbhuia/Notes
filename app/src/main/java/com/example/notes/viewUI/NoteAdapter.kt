@@ -17,6 +17,8 @@ import com.example.notes.room.Note
 
 class NoteAdapter :RecyclerView.Adapter<NoteAdapter.MyViewHolder>() {
 
+    class MyViewHolder(val itemBinding: NoteLayoutBinding) : RecyclerView.ViewHolder(itemBinding.root)
+
 
     private val differCallback = object:DiffUtil.ItemCallback<Note>(){
         override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
@@ -51,14 +53,14 @@ class NoteAdapter :RecyclerView.Adapter<NoteAdapter.MyViewHolder>() {
         )
         holder.itemBinding.ibColor.setBackgroundColor(color)
         holder.itemView.setOnClickListener {
-            val direction = HomeFragmentDirections.actionHomeFragmentToUpdateNoteFragment(currentNote)
+            val direction = HomeFragmentDirections.
+            actionHomeFragmentToUpdateNoteFragment(currentNote)
             it.findNavController().navigate(direction)
         }
     }
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
-    class MyViewHolder(val itemBinding: NoteLayoutBinding) : RecyclerView.ViewHolder(itemBinding.root)
 
 }
 

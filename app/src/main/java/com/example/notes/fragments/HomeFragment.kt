@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuItemCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notes.MainActivity
@@ -62,19 +63,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
         }
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-
-        menu.clear()
-        inflater.inflate(R.menu.home_menu, menu)
-
-        val mMenuSearch = menu.findItem(R.id.menu_search).actionView as SearchView
-        mMenuSearch.isSubmitButtonEnabled = false
-        mMenuSearch.setOnQueryTextListener(this)
-    }
     private fun updateUI(note: List<Note>?) {
-
         if (note != null) {
             if (note.isNotEmpty()) {
                 //Card View of home fragment
@@ -86,12 +75,34 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
             }
         }
     }
-    
-    
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        menu.clear()
+        inflater.inflate(R.menu.home_menu, menu)
+
+        val searchItem  : MenuItem = menu.findItem(R.id.menu_search)
+        val searchView : SearchView = searchItem.actionView as SearchView
+        searchView.apply {
+            isSubmitButtonEnabled = false
+            setOnQueryTextListener(this@HomeFragment)
+        }
+    }
+
+
 //Member function auto implement
     override fun onQueryTextSubmit(query: String?): Boolean {
        // searchNote(query)
         return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        if(newText != null) {
+            searchNote(newText)
+        }
+        return true
     }
 
     private fun searchNote(query: String?) {
@@ -101,21 +112,11 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
                 list
             )
         }
-        
-
     }
 
-    //Member function auto implement
-    override fun onQueryTextChange(newText: String?): Boolean {
-        if(newText != null) searchNote(newText)
-        return true
-    }
     override fun onDestroy() {
         super.onDestroy()
         _binding=null
 
     }
-    
-
-
 }

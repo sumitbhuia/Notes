@@ -34,19 +34,6 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
         notesViewModel = (activity as MainActivity).noteViewModel
         mView = view
     }
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        menu.clear()
-        inflater.inflate(R.menu.menu_new_note, menu)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.menu_save->{
-                saveNote(mView)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
     private fun saveNote(view: View) {
         val noteTitle = binding.editTextNoteTitle.text.toString().trim()
         val noteBody = binding.editTextNoteBody.text.toString().trim()
@@ -66,6 +53,20 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
                 Toast.LENGTH_LONG).show()
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        inflater.inflate(R.menu.menu_new_note, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_save->{
+                saveNote(mView)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
     override fun onDestroy() {
         super.onDestroy()
