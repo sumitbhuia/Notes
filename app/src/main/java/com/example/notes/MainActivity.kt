@@ -1,5 +1,6 @@
 package com.example.notes
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +19,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.statusBarColor = Color.rgb(19,16,14)
+        window.navigationBarColor = Color.rgb(19,16,14)
+
+
         setUpViewModel()
     }
 

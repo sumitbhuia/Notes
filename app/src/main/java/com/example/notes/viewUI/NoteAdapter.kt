@@ -51,7 +51,7 @@ class NoteAdapter :RecyclerView.Adapter<NoteAdapter.MyViewHolder>() {
             random.nextInt(256),
             random.nextInt(256)
         )
-        holder.itemBinding.ibColor.setBackgroundColor(color)
+       // holder.itemBinding.ibColor.setBackgroundColor(color)
         holder.itemView.setOnClickListener {
             val direction = HomeFragmentDirections.
             actionHomeFragmentToUpdateNoteFragment(currentNote)

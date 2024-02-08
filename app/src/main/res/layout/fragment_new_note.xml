@@ -7,13 +7,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.NewNoteFragment">
+    tools:context=".fragments.NewNoteFragment"
+    android:backgroundTint="@color/brown"
+    android:background="@color/brown">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:background="@color/white"
+
+        android:backgroundTint="@color/beige"
+        android:background="@color/beige"
         android:id="@+id/cardView_new_note"
         android:layout_gravity ="center"
         android:elevation="8dp"
@@ -33,11 +37,11 @@
             <EditText
                 android:id="@+id/editText_NoteTitle"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:ems="10"
                 android:hint="Title"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
                 android:textSize="22sp"
