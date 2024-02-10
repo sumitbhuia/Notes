@@ -10,6 +10,47 @@ import com.example.notes.room.NoteRepository
 import com.example.notes.viewmodel.NoteViewModel
 import com.example.notes.viewmodel.NoteViewModelFactory
 
+
+/*   Packages
+     --------
+     - Fragments
+        - Home Fragment
+        - Note fragment
+        - New Note fragment
+
+    - ROOM
+        - DAO interface
+        - Entity class
+        - Database
+        - Repository
+
+    - View Model
+        - ViewModel class
+        - ViewModel factory
+
+    - Adapter
+        - Adapter class
+
+
+
+
+
+        1. Fragments
+        -------------
+
+        - Add navHost to activityMain.xml
+        - Open make a navigation package
+            -  A navigation resource file - nav_graph.xml
+                - Inside it add fragments and set home fragment
+
+
+
+
+       2. ROOM
+       -------
+
+       -
+*/
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     lateinit var noteViewModel: NoteViewModel

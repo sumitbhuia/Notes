@@ -1,6 +1,6 @@
 package com.example.notes.room
 
-
+// Implementing properties of DAO ->database > repository
 class NoteRepository(private val db:NoteDatabase) {
     suspend fun insertNote(note:Note)= db.getNoteDAO().insertNote(note)
     suspend fun updateNote(note:Note) = db.getNoteDAO().updateNote(note)
