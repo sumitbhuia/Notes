@@ -7,6 +7,10 @@ import com.example.notes.room.Note
 import com.example.notes.room.NoteRepository
 import kotlinx.coroutines.launch
 
+// View Model helps in persistence of data
+// All that functions and va=variable that need data persistence are here
+//As they are suspend function so need to be accessed by viewModelScope from repository
+
 class NoteViewModel(val app:Application , private val noteRepository: NoteRepository) : AndroidViewModel(app) {
 
     fun addNote(note:Note) = viewModelScope.launch { noteRepository.insertNote(note) }

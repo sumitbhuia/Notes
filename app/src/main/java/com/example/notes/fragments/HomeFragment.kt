@@ -14,6 +14,23 @@ import com.example.notes.databinding.FragmentHomeBinding
 import com.example.notes.room.Note
 import com.example.notes.viewmodel.NoteViewModel
 
+/*
+     All the functional code for what a Home Fragment does
+     ------------------------------------------------------
+
+    Yes, a class in Kotlin can have two super interfaces methods , but only one super class.
+     This is because Kotlin allows a class to implement multiple interfaces , but ca extend only one super class.
+    When a class implements multiple interfaces, it must implement all of the methods declared in those interfaces.
+
+    Yes, a class can inherit from a fragment in Android.
+
+
+*/
+
+    //: Fragment(R.layout.fragment_home) indicates that HomeFragment inherits from the Fragment class
+    //, SearchView.OnQueryTextListener means that HomeFragment also implements the SearchView.OnQueryTextListener interface.
+    // This interface allows the fragment to receive and respond to events related to user input in a SearchView widget.
+
 class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextListener {
 
     private var _binding: FragmentHomeBinding? = null
