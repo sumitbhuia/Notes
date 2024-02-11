@@ -1,17 +1,21 @@
 package com.example.notes.fragments
 
 import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuItemCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notes.MainActivity
 import com.example.notes.R
-import com.example.notes.viewUI.NoteAdapter
 import com.example.notes.databinding.FragmentHomeBinding
 import com.example.notes.room.Note
+import com.example.notes.viewUI.NoteAdapter
 import com.example.notes.viewmodel.NoteViewModel
 
 /*
