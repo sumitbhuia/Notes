@@ -147,12 +147,21 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
     }
 
     private fun updateUI(note: List<Note>?) {
+        //This check ensures the note list is not null before proceeding.
         if (note != null) {
+            /*
+            Feature     |  Not Null	                          | Not Empty
+            --------       ----------                         -----------
+            Applies to  |	Any data type                     |	Strings, arrays, collections
+            Meaning     |	Value exists and has a definition | Contains at least one element */
+
+            // This inner check verifies if the note list contains any elements (i.e., it's not empty).
             if (note.isNotEmpty()) {
-                //Card View of home fragment
+                // If note List not empty do this with the cardView and recyclerView of home fragment
                 binding.cardView.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
             } else {
+                //Else
                 binding.cardView.visibility = View.VISIBLE
                 binding.recyclerView.visibility = View.GONE
             }
@@ -160,45 +169,64 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
     }
 
 
+// Setting up the  option menu  in the action bar -> here search bar
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
 
+        // Removes any existing menu items from the menu before starting fresh.
         menu.clear()
         inflater.inflate(R.menu.home_menu, menu)
 
+        // Getting the search menu option for home fragment
         val searchItem  : MenuItem = menu.findItem(R.id.menu_search)
+        //Casts the action view associated with the searchItem as a SearchView
         val searchView : SearchView = searchItem.actionView as SearchView
+
+
         searchView.apply {
+            // searchView.isSubmitButtonEnabled = false
+            // we don't to press any button after searching something
             isSubmitButtonEnabled = false
+            // Sets the fragment itself (this@HomeFragment) as the listener for any text changes within the SearchView.
+            // This implies the fragment will handle user input in the search bar.
             setOnQueryTextListener(this@HomeFragment)
         }
     }
 
 
 //Member function auto implement
+    //called when the user submits a search query using the "search" button or keyboard enter
     override fun onQueryTextSubmit(query: String?): Boolean {
-       // searchNote(query)
+       //searchNote(query)
         return false
     }
 
+    //  gets called whenever the user types or modifies text within the search bar.
     override fun onQueryTextChange(newText: String?): Boolean {
+        // if search field is not empty
         if(newText != null) {
+            // custom search note
             searchNote(newText)
         }
+        // It always returns true, indicating the event was handled.
         return true
     }
 
     private fun searchNote(query: String?) {
+        // this variable will hold a query string , wildcards are used to widen the area of search withing a database
         val searchQuery = "%$query"
-        notesViewModel.searchNote(searchQuery).observe(this) { list ->
-            noteAdapter.differ.submitList(
-                list
-            )
+        //It observes the changes to the returned list of notes (presumably filtered based on the query).
+        notesViewModel.searchNote(searchQuery).observe(this) {
+            //When the observed list changes, it updates the noteAdapter using the differ property for efficient updates.
+            list -> noteAdapter.differ.submitList(list)
         }
     }
 
+    //
     override fun onDestroy() {
+        // It calls the superclass's onDestroy for standard cleanup.
         super.onDestroy()
+            // sets binding member variable null , releasing resources associated with data binding library
         _binding=null
 
     }
