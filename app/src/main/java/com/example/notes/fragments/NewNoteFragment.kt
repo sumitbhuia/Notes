@@ -12,7 +12,7 @@ import com.example.notes.viewmodel.NoteViewModel
 import com.example.notes.room.Note
 
 
-
+// We don't implement the SearchView.OnQueryTextListener interface as we don't use search-view
 class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
 
     private var _binding: FragmentNewNoteBinding? = null
@@ -31,6 +31,7 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Changes here  will be reflected in the parent view
         notesViewModel = (activity as MainActivity).noteViewModel
         mView = view
     }

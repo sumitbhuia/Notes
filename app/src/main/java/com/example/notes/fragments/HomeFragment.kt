@@ -99,6 +99,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),SearchView.OnQueryTextList
 
         //  This line retrieves a shared ViewModel instance called noteViewModel from the parent MainActivity.
         //  ViewModels are designed to hold and manage data across configuration changes.
+        // Changes here  will reflect in the parent view
         notesViewModel = (activity as  MainActivity).noteViewModel
 
 

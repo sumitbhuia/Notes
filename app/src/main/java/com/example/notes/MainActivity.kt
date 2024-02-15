@@ -33,43 +33,51 @@ import com.example.notes.viewmodel.NoteViewModelFactory
 
 
 
+    MainActivity (Activity)
+   |
+   +- HomeFragment (Initially displayed)  setup in (nav_graph.xml)
+       |
+       +- RecyclerView (Shows list of notes)
+       |
+       +- FloatingActionButton (Navigates to NewNoteFragment)
+       |
+       +- SearchView (Filters notes based on user input)
+   |
+   +- NewNoteFragment (Accessible from HomeFragment) setup in (nav_graph.xml)
+   |
+   +- UpdateNoteFragment (Accessible from HomeFragment) setup in (nav_graph.xml)
 
 
-        1. Fragments
-        -------------
 
-        - Add navHost to activityMain.xml
-        - Open make a navigation package
-            -  A navigation resource file - nav_graph.xml
-                - Inside it add fragments and set home fragment
-
-
-
-
-       2. ROOM
-       -------
-
-       -
 */
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     lateinit var noteViewModel: NoteViewModel
 
 
+    //As we have connected the view model of Activity Main to all fragments , as changes there will reflact here
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Setting up binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Setting static navigation and status bar colour
         window.statusBarColor = Color.rgb(19,16,14)
         window.navigationBarColor = Color.rgb(19,16,14)
 
 
+        // Calling custom function to setup viewModel , that hold the data and views that are safe from config. changes
         setUpViewModel()
     }
 
+    // Function for setting up view-model
     private fun setUpViewModel() {
+        // Setting up repo -> feeding database
         val noteRepository = NoteRepository(NoteDatabase(this))
+        // Setting up factory
         val viewModelProviderFactory = NoteViewModelFactory(application,noteRepository)
+        //Setting up viewModel
         noteViewModel = ViewModelProvider(this, viewModelProviderFactory)[NoteViewModel::class.java]
     }
 }

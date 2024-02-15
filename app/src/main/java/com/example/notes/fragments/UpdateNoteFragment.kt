@@ -37,9 +37,21 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Changes her will reflect in the parent view
         notesViewModel = (activity as MainActivity).noteViewModel
+
+
+  /*       Retrieving current note
+           Extracts the note object, representing the note to be updated, from the navigation arguments using safe args.
+           Safe args ensure the retrieved value matches the expected type (Note in this case),
+           avoiding potential crashes due to type mismatches.
+
+           CurrentNote : Note  -> args.note , is an navigation argument helps feed the clicked argument to current note
+   */
+
         currentNote = args.note!!
 
+        // Populating the current note view with the  clicked view fetched by args.note of the update note
         binding.editTextNoteTitleUpdate.setText(currentNote.noteTitle)
         binding.editTextNoteBodyUpdate.setText(currentNote.noteBody)
 
