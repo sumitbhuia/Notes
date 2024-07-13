@@ -2,14 +2,15 @@ package com.example.notes.fragments
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.notes.MainActivity
 import com.example.notes.R
 import com.example.notes.databinding.FragmentNewNoteBinding
-import com.example.notes.viewmodel.NoteViewModel
 import com.example.notes.room.Note
+import com.example.notes.viewmodel.NoteViewModel
+
 
 
 // We don't implement the SearchView.OnQueryTextListener interface as we don't use search-view
