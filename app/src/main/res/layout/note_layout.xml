@@ -40,6 +40,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView_NoteTitle"
                                     android:layout_weight="200"
+                                    android:maxLines="2"
                                     android:textColor="@color/black"
                                     android:text="@string/title"
                                     android:textStyle="bold"
